@@ -24,3 +24,5 @@ urionto="http://www.cs.ox.ac.uk/isg/ontologies/dbpedia.owl"
 loadOntology(urionto)
 
 print("\nTest successful!!")
+
+
