@@ -10,4 +10,4 @@ pyparsing==2.4.7
 #RDF graph management
 rdflib==7.0.0
 #Pandas: tabular data management
-pandas==1.2.4
+pandas==2.2.3
