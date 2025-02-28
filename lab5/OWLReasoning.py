@@ -20,15 +20,28 @@ def OWLRLInference():
     
     
     #Check if entailments hold  
-    print("\nChecking entailments: ")
-    
-    triple1 = ":Carl :hasChild :Ann ."
-    checkEntailment(g, triple1)
-    
+    print("\nChecking entailments: ") 
+    checkEntailments(g)
         
     print("\nSaving extended graph")
     g.serialize(destination='data/lab5-owl2rl-extended.ttl', format='ttl')
     
+
+
+
+def checkEntailments(g):
+    
+    #print("\nChecking entailments: ")
+    
+    triple1 = ":Carl :hasChild :Ann ."
+    triple2 = ":Ann rdf:type :Child ."
+    triple3 = ":Juliet :hasChild :Ann ."
+    
+    checkEntailment(g, triple1)
+    checkEntailment(g, triple2)
+    checkEntailment(g, triple3)
+
+
 
 
 def checkEntailment(g, triple):

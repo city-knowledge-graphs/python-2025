@@ -19,13 +19,37 @@ def RDFSInference():
 
     #Check if entailments hold
     print("\nChecking entailments: ")
-    triple1 = ":Father rdfs:subClassOf :Person ."     
-    checkEntailment(g, triple1)
-
+    checkEntailments(g)
 
     
     print("\nSaving extended graph")
     g.serialize(destination='data/lab5-rdfs-extended.ttl', format='ttl')
+
+
+
+def checkEntailments(g):
+    
+    #print("\nChecking entailments: ")
+    
+    triple1 = ":Father rdfs:subClassOf :Person ." 
+    triple2 = ":Woman rdfs:subClassOf :Person ."
+    triple3 = ":Juliet a :Person ."
+    triple4 = ":Ann a :Child ."
+    triple5 = ":Ann :isChildOf :Carl ."
+    triple6 = ":Ann :hasParent :Juliet ."
+    triple7 = "rdfs:range rdf:type rdfs:Resource ."
+    triple8 = ":Mother rdfs:subClassOf :Person ."
+    
+    
+    checkEntailment(g, triple1)
+    checkEntailment(g, triple2)
+    checkEntailment(g, triple3)
+    checkEntailment(g, triple4)
+    checkEntailment(g, triple5)
+    checkEntailment(g, triple6)
+    checkEntailment(g, triple7)
+    checkEntailment(g, triple8)
+
 
 
 
