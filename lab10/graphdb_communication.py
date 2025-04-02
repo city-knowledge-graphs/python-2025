@@ -1,6 +1,6 @@
 '''
 Created on 29 Mar 2021
-Modified 2023 
+Modified April 2025 
 
 @author: ejimenez-ruiz
 '''
@@ -91,17 +91,17 @@ if test=="world-cities":
     graphdb_endpoint = localhost + "/repositories/lab_graphdb"
     
     #PATH TO DATA
-    path_to_data_file = "./data/worldcities-free-100-task2.ttl"
-    path_to_onto_file = "./data/ontology_lab5.ttl"
+    path_to_data_file = "../lab7/data/worldcities-free-100-task1.ttl"
+    path_to_onto_file = "../lab7/data/ontology_worldcities.ttl"
     
     format="ttl"
     
     
     #QUERY DATA
     query = """
-            PREFIX lab5: <http://www.semanticweb.org/ernesto/in3067-inm713/lab5/>
+            PREFIX wco: <http://www.semanticweb.org/ernesto/in3067-inm713/wco/>
             SELECT DISTINCT ?country (COUNT(?city) AS ?num_cities) WHERE { 
-                  ?country lab5:hasCity ?city .
+                  ?country wco:hasCity ?city .
             }
             GROUP BY ?country
             ORDER BY DESC(?num_cities)
@@ -114,8 +114,8 @@ elif test=="nobel-prizes":
     path_to_onto_file = "../files/nobel-prize-ontology.rdf"
     path_to_data_file = "../files/nobelprize_kg.nt"
     
-    query_file="./data/query_nobel-prize.txt"
-    #query_file="./solution/query7.5_nobel-prize.txt"
+    query_file="./data/query_nobel-prize-service.txt"
+    #query_file="./data/query7.6_nobel-prize.txt"
     query = open(query_file, 'r').read()
     
     format="ttl"
@@ -123,7 +123,7 @@ elif test=="nobel-prizes":
 
 else:
     graphdb_endpoint = localhost + "/repositories/namedGraphs"    
-    path_to_data_file = "named_graphs.ttl"
+    path_to_data_file = "./data/named_graphs.ttl"
     format="trig"
     
     #query_file="./data/query_named_simple.txt"
