@@ -16,15 +16,16 @@ def loadingData(endpoint_url, file, format="ttl"):
     #https://graphdb.ontotext.com/documentation/free/quick-start-guide.html#load-data-through-sparql-or-rdf4j-api
     print("Uploading file: " + file)
     if format=="trig":
-        curl_command = "curl '" + endpoint_url + "/statements' -X POST -H \"Content-Type:application/x-trig\" -T '" + file + "'"
+        #curl_command = "curl '" + endpoint_url + "/statements' -X POST -H \"Content-Type:application/x-trig\" -T '" + file + "'"
+        curl_command = "curl " + endpoint_url + "/statements -X POST -H \"Content-Type:application/x-trig\" -T " + file + ""
     else:
-        curl_command = "curl '" + endpoint_url + "/statements' -X POST -H \"Content-Type:application/x-turtle\" -T '" + file + "'"
+        #curl_command = "curl '" + endpoint_url + "/statements' -X POST -H \"Content-Type:application/x-turtle\" -T '" + file + "'"
+        curl_command = "curl " + endpoint_url + "/statements -X POST -H \"Content-Type:application/x-turtle\" -T " + file + ""
     #Other formats: https://librdf.org/raptor/api/raptor-formats-types-by-parser.html
     #print(curl_command)
     
     status = os.system(curl_command)
-
-    #print(status)
+    print(status)
     
     
 
@@ -110,24 +111,25 @@ if test=="world-cities":
 
 elif test=="nobel-prizes":
     
-    graphdb_endpoint = localhost + "/repositories/NobelPrize"
+    graphdb_endpoint = localhost + "/repositories/nobel_prize_python"
     path_to_onto_file = "../files/nobel-prize-ontology.rdf"
     path_to_data_file = "../files/nobelprize_kg.nt"
     
-    query_file="./data/query_nobel-prize-service.txt"
+    #query_file="./data/query_nobel-prize-service.txt"
     #query_file="./data/query7.6_nobel-prize.txt"
+    query_file="./data/query7.5_nobel-prize.txt"
     query = open(query_file, 'r').read()
     
     format="ttl"
     
 
 else:
-    graphdb_endpoint = localhost + "/repositories/namedGraphs"    
+    graphdb_endpoint = localhost + "/repositories/named_graphs_python"    
     path_to_data_file = "./data/named_graphs.ttl"
     format="trig"
     
-    #query_file="./data/query_named_simple.txt"
-    query_file="./data/query_named1.txt"
+    query_file="./data/query_named_simple.txt"
+    #query_file="./data/query_named1.txt"
     #query_file="./data/query_named2.txt"
     #query_file="./data/query_named_all.txt"
     #query_file="./data/query_named_from.txt"    
